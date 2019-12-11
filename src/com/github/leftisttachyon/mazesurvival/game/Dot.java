@@ -2,6 +2,7 @@ package com.github.leftisttachyon.mazesurvival.game;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.Point;
 
 /**
  * A dot that may be controlled by AIs or by the player.
@@ -60,5 +61,44 @@ public class Dot {
     public void move(int dx, int dy) {
         x += dx;
         y += dy;
+    }
+
+    /**
+     * Sets the x-coordinate of this dot
+     *
+     * @param x the x-coordinate to use
+     */
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    /**
+     * Sets the y-coordinate of this dot
+     *
+     * @param y the y-coordinate to use
+     */
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    /**
+     * Sets the position of this dot
+     *
+     * @param x the x-coordinate
+     * @param y the y-coordinate
+     */
+    public void setPosition(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    /**
+     * Sets the position of this dot
+     *
+     * @param p a Point object that contains the position to use for this dot
+     */
+    public void setPosition(Point p) {
+        x = p.x;
+        y = p.y;
     }
 }
