@@ -216,4 +216,24 @@ public final class Maze extends Component {
             }
         }
     }
+
+    /**
+     * Returns the cell at the given row and column
+     *
+     * @param r the row of the cell to get
+     * @param c the column of the cell to get
+     * @return the cell at the given row and column
+     */
+    public Cell getCell(int r, int c) {
+        return maze[r][c];
+    }
+
+    /**
+     * Returns the dimensions of this maze
+     *
+     * @return the dimensions of this maze
+     */
+    public Dimension getDimensions() {
+        return new Dimension(width, height);
+    }
 }

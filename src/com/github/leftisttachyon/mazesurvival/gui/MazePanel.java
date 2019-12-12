@@ -1,5 +1,6 @@
 package com.github.leftisttachyon.mazesurvival.gui;
 
+import com.github.leftisttachyon.mazesurvival.game.Dots;
 import com.github.leftisttachyon.mazesurvival.maze.Maze;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -50,6 +51,9 @@ public final class MazePanel extends JPanel implements Runnable {
     public void run() {
         Executors.newSingleThreadScheduledExecutor().scheduleAtFixedRate(
                 this::repaint, 0, 16, TimeUnit.MILLISECONDS);
+        
+        Dots.setMaze(maze);
+        System.out.println(Dots.bfs(0, 0, 14, 14));
     }
 
 }

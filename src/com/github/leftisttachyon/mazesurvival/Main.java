@@ -1,5 +1,6 @@
 package com.github.leftisttachyon.mazesurvival;
 
+import com.github.leftisttachyon.mazesurvival.game.Dots.Red;
 import com.github.leftisttachyon.mazesurvival.gui.MazePanel;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
@@ -17,6 +18,8 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        Red.RED.move();
+        
         SwingUtilities.invokeLater(() -> {
             JFrame frame = new JFrame("Maze Survival");
             MazePanel panel = new MazePanel();
