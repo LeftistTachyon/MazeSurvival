@@ -17,8 +17,6 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // Red.RED.move();
-        
         SwingUtilities.invokeLater(() -> {
             JFrame frame = new JFrame("Maze Survival");
             MazePanel panel = new MazePanel();
@@ -28,6 +26,7 @@ public class Main {
             frame.setResizable(false);
 
             frame.setVisible(true);
+            panel.requestFocusInWindow();
             new Thread(panel).start();
         });
     }

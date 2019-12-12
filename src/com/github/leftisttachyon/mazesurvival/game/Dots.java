@@ -1,17 +1,14 @@
 package com.github.leftisttachyon.mazesurvival.game;
 
 import com.github.leftisttachyon.mazesurvival.maze.Cell;
-import static com.github.leftisttachyon.mazesurvival.maze.Cell.*;
 import com.github.leftisttachyon.mazesurvival.maze.Maze;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics2D;
-import java.awt.Point;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.LinkedList;
+
+import java.awt.*;
 import java.util.List;
 import java.util.Queue;
+import java.util.*;
+
+import static com.github.leftisttachyon.mazesurvival.maze.Cell.*;
 
 /**
  * A class that contains all of the dots in this game.<br>
@@ -46,9 +43,9 @@ public class Dots {
 
     static {
         AIs = Arrays.asList(
-                /*Red.RED, */
-                Blue.BLUE, 
-                Pink.PINK, 
+                Red.RED,
+                Blue.BLUE,
+                Pink.PINK,
                 Orange.ORANGE);
         USER = new Dot(Color.BLACK);
     }
@@ -72,7 +69,8 @@ public class Dots {
 
         @Override
         public void move() {
-            System.out.println("Implemented");
+            int direction = getNextMove(y, x, USER.y, USER.x);
+            moveOne(direction);
         }
     }
 
@@ -139,6 +137,14 @@ public class Dots {
 
         @Override
         public void move() {
+            int direction, dist = Math.abs(x - USER.x) + Math.abs(y - USER.y);
+            if(dist > 8) {
+                direction = getNextMove(y, x, USER.y, USER.x);
+            } else {
+                direction = getNextMove(y, x, maze.getDimensions().height - 1, 0);
+            }
+
+            moveOne(direction);
         }
     }
 
@@ -192,15 +198,15 @@ public class Dots {
      *
      * @param fromR the starting row
      * @param fromC the starting column
-     * @param toR the ending row
-     * @param toC the ending column
+     * @param toR   the ending row
+     * @param toC   the ending column
      * @return the optimal next move
      */
     public static int getNextMove(int fromR, int fromC, int toR, int toC) {
         if (maze == null) {
             throw new IllegalStateException("maze is null!");
         }
-        
+
         Dimension dim = maze.getDimensions();
         if (fromR < 0 || fromR >= dim.height) {
             throw new IllegalArgumentException("Invalid starting row: " + fromR);
@@ -256,8 +262,8 @@ public class Dots {
      *
      * @param fromR the starting row
      * @param fromC the starting column
-     * @param toR the ending row
-     * @param toC the ending column
+     * @param toR   the ending row
+     * @param toC   the ending column
      * @return the length of the shortest path to get from the first given
      * square to the second one.
      */
@@ -265,7 +271,7 @@ public class Dots {
         if (maze == null) {
             throw new IllegalStateException("maze is null!");
         }
-        
+
         Dimension dim = maze.getDimensions();
         if (fromR < 0 || fromR >= dim.height) {
             throw new IllegalArgumentException("Invalid starting row: " + fromR);
@@ -279,18 +285,18 @@ public class Dots {
         if (toC < 0 || toC >= dim.width) {
             throw new IllegalArgumentException("Invalid ending column: " + toC);
         }
-        
+
         HashSet<Point> visited = new HashSet<>();
         Queue<int[]> q = new LinkedList<>();
         q.add(new int[]{fromR, fromC, 0});
-        while(!q.isEmpty() && (q.element()[0] != toR || q.element()[1] != toC)) {
+        while (!q.isEmpty() && (q.element()[0] != toR || q.element()[1] != toC)) {
             int[] cur = q.remove();
             Point point = new Point(cur[0], cur[1]);
             Cell c = maze.getCell(cur[0], cur[1]);
             if (visited.contains(point)) {
                 continue;
             }
-            
+
             if (cur[0] + 1 < dim.height && !c.getWall(SOUTH)) {
                 q.add(new int[]{cur[0] + 1, cur[1], cur[2] + 1});
             }
@@ -303,9 +309,24 @@ public class Dots {
             if (cur[1] - 1 >= 0 && !c.getWall(WEST)) {
                 q.add(new int[]{cur[0], cur[1] - 1, cur[2] + 1});
             }
-            
+
             visited.add(point);
         }
         return q.element()[2];
+    }
+
+    /**
+     * Determines whether the user-controlled dot is overlapping with any of the AI-controlled dots
+     *
+     * @return if the user-controlled dot is overlapping with an AI-controlled dots
+     */
+    public static boolean isOverlapping() {
+        for (AIDot dot : AIs) {
+            if (dot.x == USER.x && dot.y == USER.y) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

@@ -1,15 +1,11 @@
 package com.github.leftisttachyon.mazesurvival.maze;
 
-import static com.github.leftisttachyon.mazesurvival.maze.Cell.*;
-import java.awt.BasicStroke;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
+import static com.github.leftisttachyon.mazesurvival.maze.Cell.*;
 
 /**
  * A class that represents a maze
@@ -43,8 +39,7 @@ public final class Maze extends Component {
         this.height = height;
         this.width = width;
 
-        setPreferredSize(new Dimension(width * Cell.WIDTH + 20,
-                height * Cell.WIDTH + 20));
+        setPreferredSize(new Dimension(width * Cell.WIDTH + 20, height * Cell.WIDTH + 20));
 
         generate();
     }

@@ -1,8 +1,10 @@
 package com.github.leftisttachyon.mazesurvival.game;
 
-import java.awt.Color;
-import java.awt.Graphics2D;
-import java.awt.Point;
+import com.github.leftisttachyon.mazesurvival.maze.Cell;
+
+import java.awt.*;
+
+import static com.github.leftisttachyon.mazesurvival.maze.Cell.*;
 
 /**
  * A dot that may be controlled by AIs or by the player.
@@ -10,6 +12,11 @@ import java.awt.Point;
  * @author Jed Wang
  */
 public class Dot {
+
+    /**
+     * The width of this Dot
+     */
+    public static final int WIDTH = 8;
 
     /**
      * The coordinates of this dot
@@ -33,8 +40,8 @@ public class Dot {
     /**
      * Creates a new dot and places it at the given coordinates
      *
-     * @param x the x-coordinate to place this dot at
-     * @param y the y-coordinate to place this dot at
+     * @param x     the x-coordinate to place this dot at
+     * @param y     the y-coordinate to place this dot at
      * @param color the color of this dot
      */
     public Dot(int x, int y, Color color) {
@@ -49,7 +56,10 @@ public class Dot {
      * @param g2D the Graphics2D object to use to paint the dot
      */
     public void paint(Graphics2D g2D) {
-
+        g2D.setColor(color);
+        int cX = x * Cell.WIDTH + Cell.WIDTH / 2,
+                cY = y * Cell.WIDTH + Cell.WIDTH / 2;
+        g2D.fillOval(cX - WIDTH / 2, cY - WIDTH / 2, WIDTH, WIDTH);
     }
 
     /**
@@ -100,5 +110,45 @@ public class Dot {
     public void setPosition(Point p) {
         x = p.x;
         y = p.y;
+    }
+
+    /**
+     * Returns the x-coordinate of this dot
+     *
+     * @return the x-coordinate of this dot
+     */
+    public int getX() {
+        return x;
+    }
+
+    /**
+     * Returns the y-coordinate of this dot
+     *
+     * @return the y-coordinate of this dot
+     */
+    public int getY() {
+        return y;
+    }
+
+    /**
+     * Moves this dot one unit in the given direction
+     *
+     * @param direction the direction to move this dot
+     */
+    public void moveOne(int direction) {
+        switch (direction) {
+            case NORTH:
+                y--;
+                break;
+            case EAST:
+                x++;
+                break;
+            case SOUTH:
+                y++;
+                break;
+            case WEST:
+                x--;
+                break;
+        }
     }
 }
