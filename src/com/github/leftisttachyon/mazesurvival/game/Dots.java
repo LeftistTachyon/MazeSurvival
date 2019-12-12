@@ -61,13 +61,7 @@ public class Dots {
         /**
          * The only Red to be created
          */
-        private static final Red RED;
-        
-        static {
-            System.out.print("Initializing red... ");
-            RED = new Red();
-            System.out.println("Initialized!");
-        }
+        private static final Red RED = new Red();
 
         /**
          * Creates a new Red instance.
