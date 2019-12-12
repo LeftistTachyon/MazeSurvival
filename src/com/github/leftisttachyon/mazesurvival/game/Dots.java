@@ -56,12 +56,12 @@ public class Dots {
     /**
      * The red dot AI
      */
-    public static class Red extends AIDot {
+    private static class Red extends AIDot {
 
         /**
          * The only Red to be created
          */
-        public static final Red RED;
+        private static final Red RED;
         
         static {
             System.out.print("Initializing red... ");
@@ -289,7 +289,7 @@ public class Dots {
         HashSet<Point> visited = new HashSet<>();
         Queue<int[]> q = new LinkedList<>();
         q.add(new int[]{fromR, fromC, 0});
-        while(!q.isEmpty() || (q.peek()[0] == toR && q.peek()[1] == toC)) {
+        while(!q.isEmpty() && (q.element()[0] != toR || q.element()[1] != toC)) {
             int[] cur = q.remove();
             Point point = new Point(cur[0], cur[1]);
             Cell c = maze.getCell(cur[0], cur[1]);
@@ -312,6 +312,6 @@ public class Dots {
             
             visited.add(point);
         }
-        return q.peek()[2];
+        return q.element()[2];
     }
 }

@@ -192,8 +192,8 @@ public final class Maze extends Component {
     @Override
     public void paint(Graphics g) {
         Graphics2D g2D = (Graphics2D) g;
-        g2D.setStroke(new BasicStroke(3, BasicStroke.CAP_ROUND,
-                BasicStroke.JOIN_ROUND));
+        g2D.setStroke(new BasicStroke(3, BasicStroke.CAP_SQUARE,
+                BasicStroke.JOIN_MITER));
 
         g2D.setColor(Color.BLACK);
         for (int i = 0, y = 0; i < height; i++, y += Cell.WIDTH) {
