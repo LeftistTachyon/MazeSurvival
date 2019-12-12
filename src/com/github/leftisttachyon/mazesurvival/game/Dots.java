@@ -37,6 +37,11 @@ public class Dots {
     private static final Dot USER;
 
     /**
+     * The last move of the user
+     */
+    private static int lastMove = -1;
+
+    /**
      * The maze object to use for navigation.
      */
     private static Maze maze;
@@ -93,6 +98,19 @@ public class Dots {
 
         @Override
         public void move() {
+            Point plus2 = transform(new Point(USER.x, USER.y), lastMove, 2);
+            int dy = plus2.y - y, dx = plus2.x - x;
+            int _y = dy + plus2.y, _x = dx + plus2.x;
+            if(_y < 0) {
+                _y = 0;
+            }
+            if(_x < 0) {
+                _x = 0;
+            }
+
+            Dimension dim = maze.getDimensions();
+
+            moveOne(getNextMove(y, x, _y % dim.height, _x % dim.width));
         }
     }
 
@@ -115,6 +133,8 @@ public class Dots {
 
         @Override
         public void move() {
+            Point to = transformAndTrim(new Point(USER.x, USER.y), lastMove, 4);
+            moveOne(getNextMove(y, x, to.y, to.x));
         }
     }
 
@@ -138,7 +158,7 @@ public class Dots {
         @Override
         public void move() {
             int direction, dist = Math.abs(x - USER.x) + Math.abs(y - USER.y);
-            if(dist > 8) {
+            if (dist > 8) {
                 direction = getNextMove(y, x, USER.y, USER.x);
             } else {
                 direction = getNextMove(y, x, maze.getDimensions().height - 1, 0);
@@ -328,5 +348,96 @@ public class Dots {
         }
 
         return false;
+    }
+
+    /**
+     * Moves the user dot in the given direction one unit.
+     *
+     * @param direction the direction to move the user dot in
+     */
+    public static void moveUserDot(int direction) {
+        USER.moveOne(direction);
+        lastMove = direction;
+    }
+
+    /**
+     * Returns the last move of the user-controlled dot
+     *
+     * @return the last move of the user-controlled dot
+     */
+    public static int getLastMove() {
+        return lastMove;
+    }
+
+    /**
+     * Transforms the given Point object the given amount of units in the given direction
+     *
+     * @param start     the starting Point
+     * @param direction the direction to transform the Point
+     * @param units     the amount to transform the Point
+     * @return the newly transformed Point
+     */
+    public static Point transform(Point start, int direction, int units) {
+        switch (direction) {
+            case NORTH:
+                return new Point(start.x, start.y - units);
+            case EAST:
+                return new Point(start.x + units, start.y);
+            case SOUTH:
+                return new Point(start.x, start.y + units);
+            case WEST:
+                return new Point(start.x - units, start.y);
+            default:
+                throw new IllegalArgumentException("Invalid parameter: direction=" + direction);
+        }
+    }
+
+    /**
+     * Transforms the given Point object the given amount of units in the given direction
+     * and ensures that this point is within the bounds of the internally stored maze
+     *
+     * @param start the starting Point
+     * @param direction the direction to transform the Point
+     * @param units the amount to transform the Point
+     * @return the newly transformed Point, guaranteed to be within the bounds of the
+     * internally stored maze
+     */
+    public static Point transformAndTrim(Point start, int direction, int units) {
+        if (maze == null) {
+            throw new IllegalStateException("maze is null!");
+        }
+
+        int x, y;
+        switch (direction) {
+            case NORTH:
+                x = start.x;
+                y = start.y - units;
+                break;
+            case EAST:
+                x = start.x + units;
+                y = start.y;
+                break;
+            case SOUTH:
+                x = start.x;
+                y = start.y + units;
+                break;
+            case WEST:
+                x = start.x - units;
+                y = start.y;
+                break;
+            default:
+                throw new IllegalArgumentException("Invalid parameter: direction=" + direction);
+        }
+
+        if (x < 0) {
+            x = 0;
+        }
+        if (y < 0) {
+            y = 0;
+        }
+
+        Dimension dim = maze.getDimensions();
+
+        return new Point(x % dim.width, y % dim.height);
     }
 }

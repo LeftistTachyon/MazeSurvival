@@ -57,7 +57,7 @@ public final class MazePanel extends JPanel implements Runnable {
                 switch (e.getKeyCode()) {
                     case VK_UP:
                         if (!pressed[0] && !c.getWall(Cell.NORTH)) {
-                            user.move(0, -1);
+                            Dots.moveUserDot(Cell.NORTH);
                             pressed[0] = true;
                         } else {
                             return;
@@ -65,7 +65,7 @@ public final class MazePanel extends JPanel implements Runnable {
                         break;
                     case VK_RIGHT:
                         if (!pressed[1] && !c.getWall(Cell.EAST)) {
-                            user.move(1, 0);
+                            Dots.moveUserDot(Cell.EAST);
                             pressed[1] = true;
                         } else {
                             return;
@@ -73,7 +73,7 @@ public final class MazePanel extends JPanel implements Runnable {
                         break;
                     case VK_DOWN:
                         if (!pressed[2] && !c.getWall(Cell.SOUTH)) {
-                            user.move(0, 1);
+                            Dots.moveUserDot(Cell.SOUTH);
                             pressed[2] = true;
                         } else {
                             return;
@@ -81,7 +81,7 @@ public final class MazePanel extends JPanel implements Runnable {
                         break;
                     case VK_LEFT:
                         if (!pressed[3] && !c.getWall(Cell.WEST)) {
-                            user.move(-1, 0);
+                            Dots.moveUserDot(Cell.WEST);
                             pressed[3] = true;
                         } else {
                             return;
