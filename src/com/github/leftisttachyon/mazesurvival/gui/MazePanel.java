@@ -230,17 +230,17 @@ public final class MazePanel extends JPanel implements Runnable {
                 frameCnt++;
             }
 
-            try {
-                g2D.transform(transform.createInverse());
-            } catch (NoninvertibleTransformException e) {
-                e.printStackTrace();
-            }
-
             Dimension dim = maze.getDimensions();
             int totalWidth = getWidth(), totalHeight = getHeight();
 
             g2D.setColor(new Color(255, 255, 255, frameCnt >= 255 ? 255 : frameCnt));
             g2D.fillRect(-3, -3, totalWidth + 6, totalHeight + 6);
+
+            try {
+                g2D.transform(transform.createInverse());
+            } catch (NoninvertibleTransformException e) {
+                e.printStackTrace();
+            }
 
             if (frameCnt >= 300) {
                 g2D.setColor(Color.BLACK);
