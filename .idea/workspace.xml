@@ -3,9 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="e18bf84e-d561-4138-8ce1-fe5cd50b8fa8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/github/leftisttachyon/mazesurvival/game/AIDot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/github/leftisttachyon/mazesurvival/game/AIDot.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/github/leftisttachyon/mazesurvival/game/Dots.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/github/leftisttachyon/mazesurvival/game/Dots.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/github/leftisttachyon/mazesurvival/gui/MazePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/github/leftisttachyon/mazesurvival/gui/MazePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/github/leftisttachyon/mazesurvival/maze/Maze.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/github/leftisttachyon/mazesurvival/maze/Maze.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,30 +86,30 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="412" y="147" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1366.728@0.0.1366.728" timestamp="1576184353357" />
-    <state width="1323" height="179" key="GridCell.Tab.0.bottom" timestamp="1576209325748">
+    <state width="1323" height="179" key="GridCell.Tab.0.bottom" timestamp="1576214037731">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1576209325748" />
-    <state width="1323" height="179" key="GridCell.Tab.0.center" timestamp="1576209325748">
+    <state width="1323" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1576214037731" />
+    <state width="1323" height="179" key="GridCell.Tab.0.center" timestamp="1576214037731">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1576209325748" />
-    <state width="1323" height="179" key="GridCell.Tab.0.left" timestamp="1576209325748">
+    <state width="1323" height="179" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1576214037731" />
+    <state width="1323" height="179" key="GridCell.Tab.0.left" timestamp="1576214037731">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1576209325748" />
-    <state width="1323" height="179" key="GridCell.Tab.0.right" timestamp="1576209325748">
+    <state width="1323" height="179" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1576214037731" />
+    <state width="1323" height="179" key="GridCell.Tab.0.right" timestamp="1576214037731">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1576209325748" />
+    <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1576214037731" />
     <state x="184" y="0" key="SettingsEditor" timestamp="1576184293166">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="184" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1576184293166" />
-    <state x="379" y="187" key="com.intellij.ide.util.TipDialog" timestamp="1576203684537">
+    <state x="379" y="187" key="com.intellij.ide.util.TipDialog" timestamp="1576211551514">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="379" y="187" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1576203684537" />
+    <state x="379" y="187" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1576211551514" />
     <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1576204160085">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

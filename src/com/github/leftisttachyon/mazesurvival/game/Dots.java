@@ -468,11 +468,11 @@ public class Dots {
     }
 
     /**
-     * Determines whether the given square on the maze is occupied.
+     * Determines whether the given square on the maze is occupied by an AIDot.
      *
      * @param r the row of the square
      * @param c the column of the square
-     * @return whether the given square is occupied
+     * @return whether the given square is occupied by an AIDot
      */
     public static boolean isOccupied(int r, int c) {
         for (AIDot dot : AIs) {
@@ -481,6 +481,6 @@ public class Dots {
             }
         }
 
-        return USER.x == c && USER.y == r;
+        return false;
     }
 }

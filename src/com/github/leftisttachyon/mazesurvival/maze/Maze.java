@@ -39,7 +39,7 @@ public final class Maze extends Component {
         this.height = height;
         this.width = width;
 
-        setPreferredSize(new Dimension(width * Cell.WIDTH + 20, height * Cell.WIDTH + 20));
+        setPreferredSize(new Dimension(width * Cell.WIDTH + 30, height * Cell.WIDTH + 40));
 
         generate();
     }
