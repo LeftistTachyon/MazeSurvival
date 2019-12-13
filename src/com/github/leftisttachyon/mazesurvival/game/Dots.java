@@ -65,10 +65,6 @@ public class Dots {
          */
         private static final Red RED = new Red();
 
-        static {
-            RED.setPosition(0, 0);
-        }
-
         /**
          * Creates a new Red instance.
          */
@@ -92,10 +88,6 @@ public class Dots {
          * The only Blue to be created
          */
         private static final Blue BLUE = new Blue();
-
-        static {
-            BLUE.setPosition(1, 0);
-        }
 
         /**
          * Creates a new Blue instance.
@@ -134,10 +126,6 @@ public class Dots {
          */
         private static final Pink PINK = new Pink();
 
-        static {
-            PINK.setPosition(0, 1);
-        }
-
         /**
          * Creates a new Pink instance.
          */
@@ -164,10 +152,6 @@ public class Dots {
          * The only Orange to be created
          */
         private static final Orange ORANGE = new Orange();
-
-        static {
-            ORANGE.setPosition(1, 1);
-        }
 
         /**
          * Creates a new Orange instance.
@@ -482,5 +466,14 @@ public class Dots {
         }
 
         return false;
+    }
+
+    /**
+     * Returns the list of AIs
+     *
+     * @return the list of AIs
+     */
+    public static List<AIDot> getAIs() {
+        return AIs;
     }
 }
