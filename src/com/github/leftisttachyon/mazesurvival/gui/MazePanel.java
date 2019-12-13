@@ -11,6 +11,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.geom.AffineTransform;
 import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 import static java.awt.event.KeyEvent.*;
@@ -50,7 +51,7 @@ public final class MazePanel extends JPanel implements Runnable {
             @Override
             public void keyPressed(KeyEvent e) {
                 // System.out.println("Pressed " + e.getKeyCode());
-                
+
                 Dot user = Dots.getUserDot();
                 Cell c = maze.getCell(user.getY(), user.getX());
 
@@ -87,11 +88,7 @@ public final class MazePanel extends JPanel implements Runnable {
                             return;
                         }
                         break;
-                    default:
-                        return;
                 }
-
-                Dots.moveAIs();
             }
 
             @Override
@@ -120,6 +117,8 @@ public final class MazePanel extends JPanel implements Runnable {
 
     @Override
     public void paint(Graphics g) {
+        // System.out.println("Painting");
+
         Graphics2D g2D = (Graphics2D) g;
         g2D.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
                 RenderingHints.VALUE_ANTIALIAS_ON);
@@ -136,8 +135,21 @@ public final class MazePanel extends JPanel implements Runnable {
 
     @Override
     public void run() {
-        Executors.newSingleThreadScheduledExecutor().scheduleAtFixedRate(
-                this::repaint, 0, 16, TimeUnit.MILLISECONDS);
+        ScheduledExecutorService service = Executors.newScheduledThreadPool(2);
+        service.scheduleAtFixedRate(() -> {
+            try {
+                repaint();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }, 0, 16, TimeUnit.MILLISECONDS);
+        service.scheduleAtFixedRate(() -> {
+            try {
+                Dots.moveAIs();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }, 0, 500, TimeUnit.MILLISECONDS);
     }
 
 }

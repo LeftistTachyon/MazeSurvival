@@ -39,7 +39,7 @@ public class Dots {
     /**
      * The last move of the user
      */
-    private static int lastMove = -1;
+    private static int lastMove = 0;
 
     /**
      * The maze object to use for navigation.
@@ -65,6 +65,10 @@ public class Dots {
          */
         private static final Red RED = new Red();
 
+        static {
+            RED.setPosition(0, 0);
+        }
+
         /**
          * Creates a new Red instance.
          */
@@ -74,8 +78,8 @@ public class Dots {
 
         @Override
         public void move() {
-            int direction = getNextMove(y, x, USER.y, USER.x);
-            moveOne(direction);
+            TreeMap<Integer, List<Integer>> bestMoves = getBestMoves(y, x, USER.y, USER.x);
+            moveOne(bestMoves);
         }
     }
 
@@ -89,6 +93,10 @@ public class Dots {
          */
         private static final Blue BLUE = new Blue();
 
+        static {
+            BLUE.setPosition(1, 0);
+        }
+
         /**
          * Creates a new Blue instance.
          */
@@ -101,16 +109,18 @@ public class Dots {
             Point plus2 = transform(new Point(USER.x, USER.y), lastMove, 2);
             int dy = plus2.y - y, dx = plus2.x - x;
             int _y = dy + plus2.y, _x = dx + plus2.x;
-            if(_y < 0) {
+            if (_y < 0) {
                 _y = 0;
             }
-            if(_x < 0) {
+            if (_x < 0) {
                 _x = 0;
             }
 
             Dimension dim = maze.getDimensions();
 
-            moveOne(getNextMove(y, x, _y % dim.height, _x % dim.width));
+            // moveOne(getNextMove(y, x, _y % dim.height, _x % dim.width));
+            TreeMap<Integer, List<Integer>> bestMoves = getBestMoves(y, x, _y % dim.height, _x % dim.width);
+            moveOne(bestMoves);
         }
     }
 
@@ -124,6 +134,10 @@ public class Dots {
          */
         private static final Pink PINK = new Pink();
 
+        static {
+            PINK.setPosition(0, 1);
+        }
+
         /**
          * Creates a new Pink instance.
          */
@@ -134,7 +148,10 @@ public class Dots {
         @Override
         public void move() {
             Point to = transformAndTrim(new Point(USER.x, USER.y), lastMove, 4);
-            moveOne(getNextMove(y, x, to.y, to.x));
+            // moveOne(getNextMove(y, x, to.y, to.x));
+
+            TreeMap<Integer, List<Integer>> bestMoves = getBestMoves(y, x, to.y, to.x);
+            moveOne(bestMoves);
         }
     }
 
@@ -148,6 +165,10 @@ public class Dots {
          */
         private static final Orange ORANGE = new Orange();
 
+        static {
+            ORANGE.setPosition(1, 1);
+        }
+
         /**
          * Creates a new Orange instance.
          */
@@ -157,14 +178,18 @@ public class Dots {
 
         @Override
         public void move() {
-            int direction, dist = Math.abs(x - USER.x) + Math.abs(y - USER.y);
+            int dist = Math.abs(x - USER.x) + Math.abs(y - USER.y);
+            TreeMap<Integer, List<Integer>> bestMoves;
             if (dist > 8) {
-                direction = getNextMove(y, x, USER.y, USER.x);
+                // direction = getNextMove(y, x, USER.y, USER.x);
+                bestMoves = getBestMoves(y, x, USER.y, USER.x);
             } else {
-                direction = getNextMove(y, x, maze.getDimensions().height - 1, 0);
+                // direction = getNextMove(y, x, maze.getDimensions().height - 1, 0);
+                bestMoves = getBestMoves(y, x, maze.getDimensions().height - 1, 0);
             }
 
-            moveOne(direction);
+            // moveOne(direction);
+            moveOne(bestMoves);
         }
     }
 
@@ -188,6 +213,8 @@ public class Dots {
         if (maze == null) {
             throw new IllegalStateException("maze is null!");
         }
+
+        // System.out.println("Moving!");
 
         for (AIDot dot : AIs) {
             dot.move();
@@ -213,16 +240,16 @@ public class Dots {
     }
 
     /**
-     * Returns the optimal move for moving from the first given square to the
+     * Returns optimal moves for moving from the first given square to the
      * second one. This algorithm relies on breadth first search.
      *
      * @param fromR the starting row
      * @param fromC the starting column
      * @param toR   the ending row
      * @param toC   the ending column
-     * @return the optimal next move
+     * @return a TreeMap of possible moves, in (weight, direction(s)) pairs
      */
-    public static int getNextMove(int fromR, int fromC, int toR, int toC) {
+    public static TreeMap<Integer, List<Integer>> getBestMoves(int fromR, int fromC, int toR, int toC) {
         if (maze == null) {
             throw new IllegalStateException("maze is null!");
         }
@@ -242,37 +269,45 @@ public class Dots {
         }
 
         Cell c = maze.getCell(fromR, fromC);
-        int nextMove = -1, minMoves = Integer.MAX_VALUE;
+        TreeMap<Integer, List<Integer>> output = new TreeMap<>();
         if (fromR - 1 >= 0 && !c.getWall(NORTH)) {
             int temp = bfs(fromR - 1, fromC, toR, toC);
-            if (temp < minMoves) {
-                nextMove = NORTH;
-                minMoves = temp;
-            }
+            ArrayList<Integer> list = new ArrayList<>();
+            list.add(NORTH);
+            output.put(temp, list);
         }
         if (fromR + 1 < dim.height && !c.getWall(SOUTH)) {
             int temp = bfs(fromR + 1, fromC, toR, toC);
-            if (temp < minMoves) {
-                nextMove = SOUTH;
-                minMoves = temp;
+            if (output.containsKey(temp)) {
+                output.get(temp).add(SOUTH);
+            } else {
+                ArrayList<Integer> list = new ArrayList<>();
+                list.add(SOUTH);
+                output.put(temp, list);
             }
         }
         if (fromC - 1 >= 0 && !c.getWall(WEST)) {
             int temp = bfs(fromR, fromC - 1, toR, toC);
-            if (temp < minMoves) {
-                nextMove = WEST;
-                minMoves = temp;
+            if (output.containsKey(temp)) {
+                output.get(temp).add(WEST);
+            } else {
+                ArrayList<Integer> list = new ArrayList<>();
+                list.add(WEST);
+                output.put(temp, list);
             }
         }
         if (fromC + 1 < dim.width && !c.getWall(EAST)) {
             int temp = bfs(fromR, fromC + 1, toR, toC);
-            if (temp < minMoves) {
-                nextMove = EAST;
-                // minMoves = temp;
+            if (output.containsKey(temp)) {
+                output.get(temp).add(EAST);
+            } else {
+                ArrayList<Integer> list = new ArrayList<>();
+                list.add(EAST);
+                output.put(temp, list);
             }
         }
 
-        return nextMove;
+        return output;
     }
 
     /**
@@ -361,15 +396,6 @@ public class Dots {
     }
 
     /**
-     * Returns the last move of the user-controlled dot
-     *
-     * @return the last move of the user-controlled dot
-     */
-    public static int getLastMove() {
-        return lastMove;
-    }
-
-    /**
      * Transforms the given Point object the given amount of units in the given direction
      *
      * @param start     the starting Point
@@ -396,9 +422,9 @@ public class Dots {
      * Transforms the given Point object the given amount of units in the given direction
      * and ensures that this point is within the bounds of the internally stored maze
      *
-     * @param start the starting Point
+     * @param start     the starting Point
      * @param direction the direction to transform the Point
-     * @param units the amount to transform the Point
+     * @param units     the amount to transform the Point
      * @return the newly transformed Point, guaranteed to be within the bounds of the
      * internally stored maze
      */
@@ -439,5 +465,22 @@ public class Dots {
         Dimension dim = maze.getDimensions();
 
         return new Point(x % dim.width, y % dim.height);
+    }
+
+    /**
+     * Determines whether the given square on the maze is occupied.
+     *
+     * @param r the row of the square
+     * @param c the column of the square
+     * @return whether the given square is occupied
+     */
+    public static boolean isOccupied(int r, int c) {
+        for (AIDot dot : AIs) {
+            if (dot.x == c && dot.y == r) {
+                return true;
+            }
+        }
+
+        return USER.x == c && USER.y == r;
     }
 }
