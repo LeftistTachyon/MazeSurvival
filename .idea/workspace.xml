@@ -2,7 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e18bf84e-d561-4138-8ce1-fe5cd50b8fa8" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/build/classes/com/github/leftisttachyon/mazesurvival/gui/MazePanel$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/com/github/leftisttachyon/mazesurvival/gui/MazePanel$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/com/github/leftisttachyon/mazesurvival/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/com/github/leftisttachyon/mazesurvival/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/com/github/leftisttachyon/mazesurvival/game/AIDot.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/com/github/leftisttachyon/mazesurvival/game/AIDot.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/com/github/leftisttachyon/mazesurvival/game/Dot.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/com/github/leftisttachyon/mazesurvival/game/Dot.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/com/github/leftisttachyon/mazesurvival/game/Dots$Blue.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/com/github/leftisttachyon/mazesurvival/game/Dots$Blue.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/com/github/leftisttachyon/mazesurvival/game/Dots$Orange.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/com/github/leftisttachyon/mazesurvival/game/Dots$Orange.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/com/github/leftisttachyon/mazesurvival/game/Dots$Pink.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/com/github/leftisttachyon/mazesurvival/game/Dots$Pink.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/com/github/leftisttachyon/mazesurvival/game/Dots$Red.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/com/github/leftisttachyon/mazesurvival/game/Dots$Red.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/com/github/leftisttachyon/mazesurvival/game/Dots.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/com/github/leftisttachyon/mazesurvival/game/Dots.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/com/github/leftisttachyon/mazesurvival/gui/MazePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/com/github/leftisttachyon/mazesurvival/gui/MazePanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/com/github/leftisttachyon/mazesurvival/maze/Maze.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/com/github/leftisttachyon/mazesurvival/maze/Maze.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nbproject/private/private.properties" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/private/private.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nbproject/private/private.xml" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/private/private.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/github/leftisttachyon/mazesurvival/gui/MazePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/github/leftisttachyon/mazesurvival/gui/MazePanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -84,34 +98,34 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="412" y="147" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1366.728@0.0.1366.728" timestamp="1576184353357" />
-    <state width="914" height="281" key="GridCell.Tab.0.bottom" timestamp="1576268620694">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1323" height="179" key="GridCell.Tab.0.bottom" timestamp="1576352786105">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1576255537645" />
+    <state width="1323" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1576352786105" />
     <state width="914" height="281" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1576268620694" />
-    <state width="914" height="281" key="GridCell.Tab.0.center" timestamp="1576268620694">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1323" height="179" key="GridCell.Tab.0.center" timestamp="1576352786101">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1576255537645" />
+    <state width="1323" height="179" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1576352786101" />
     <state width="914" height="281" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1576268620694" />
-    <state width="914" height="281" key="GridCell.Tab.0.left" timestamp="1576268620694">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1323" height="179" key="GridCell.Tab.0.left" timestamp="1576352786101">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1576255537645" />
+    <state width="1323" height="179" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1576352786101" />
     <state width="914" height="281" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1576268620694" />
-    <state width="914" height="281" key="GridCell.Tab.0.right" timestamp="1576268620694">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1323" height="179" key="GridCell.Tab.0.right" timestamp="1576352786101">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1576255537645" />
+    <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1576352786101" />
     <state width="914" height="281" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1576268620694" />
     <state x="184" y="0" key="SettingsEditor" timestamp="1576184293166">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="184" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1576184293166" />
-    <state x="533" y="267" key="com.intellij.ide.util.TipDialog" timestamp="1576267784165">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="379" y="187" key="com.intellij.ide.util.TipDialog" timestamp="1576351004394">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="379" y="187" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1576249867915" />
+    <state x="379" y="187" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1576351004394" />
     <state x="533" y="267" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1576267784165" />
     <state x="492" y="280" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1576255121003">
       <screen x="0" y="0" width="1366" height="728" />

@@ -73,7 +73,7 @@ public final class MazePanel extends JPanel implements Runnable {
      * Creates a new MazePanel.
      */
     public MazePanel() {
-        maze = new Maze(15, 15);
+        maze = new Maze(30, 30);
         add(maze);
 
         Dots.setMaze(maze);
@@ -185,7 +185,7 @@ public final class MazePanel extends JPanel implements Runnable {
         moveDelay = 500;
         moveDelayDelay = 0;
 
-        maze = new Maze(15, 15);
+        maze = new Maze(30, 30);
 
         Dots.setMaze(maze);
         setDotPositions();

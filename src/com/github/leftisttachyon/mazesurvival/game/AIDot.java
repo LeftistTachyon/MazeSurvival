@@ -67,7 +67,6 @@ public abstract class AIDot extends Dot {
 
         if (firstNotOccupied != -1) {
             moveOne(firstNotOccupied);
-            return;
         }
     }
 
